@@ -16,14 +16,67 @@ data_ = st.sidebar.radio(
     options=("Yo'q", "Ha"))
 
 if data_ == 'Ha':
-    st.markdown("<h1 style='text-align: center; color: red;'>Dataset</h1>", unsafe_allow_html=True)
-    st.write(df)
+    st.markdown("<h1 style='text-align: center; color: red;'>Ma'lumotlar to'plami</h1>", unsafe_allow_html=True)
+
+    df_uz = df.copy()
+    df_uz = df_uz.rename(columns={
+        "Loan_ID": "Ariza_ID",
+        "Gender": "Jinsi",
+        "Married": "Turmush_holati",
+        "Dependents": "Qaramog'idagilar",
+        "Education": "Ta'lim",
+        "Self_Employed": "O'z_ishi",
+        "ApplicantIncome": "Daromad",
+        "CoapplicantIncome": "Sherik_daromadi",
+        "LoanAmount": "Kredit_miqdori",
+        "Loan_Amount_Term": "Kredit_muddati",
+        "Credit_History": "Kredit_tarixi",
+        "Property_Area": "Hudud",
+        "Loan_Status": "Natija"
+    })
+
+    df_uz["Jinsi"] = df_uz["Jinsi"].replace({"Male": "Erkak", "Female": "Ayol"})
+    df_uz["Turmush_holati"] = df_uz["Turmush_holati"].replace({"Yes": "Ha", "No": "Yo'q"})
+    df_uz["Ta'lim"] = df_uz["Ta'lim"].replace({"Graduate": "Oliy ma'lumotli", "Not Graduate": "Oliy ma'lumotsiz"})
+    df_uz["O'z_ishi"] = df_uz["O'z_ishi"].replace({"Yes": "Ha", "No": "Yo'q"})
+    df_uz["Hudud"] = df_uz["Hudud"].replace({"Urban": "Shahar", "Rural": "Qishloq", "Semiurban": "Yarim shahar"})
+    df_uz["Natija"] = df_uz["Natija"].replace({"Y": "Tasdiqlangan", "N": "Rad etilgan"})
+
+    st.write(df_uz)
+
+# st.sidebar.subheader("Algoritmlar")
+# top_book_ = st.sidebar.selectbox(
+#     label="Algoritmni tanlang",
+#     options=['SVC', 'LogisticRegression', 'RandomForestClassifier', 'KNeighborsClassifier',
+#              'GradientBoostingClassifier', 'XGBClassifier', 'DecisionTreeClassifier'])
+
+# models_acc = [Models.svc(), Models.lr(), Models.rfc(), Models.knc(), Models.gbc(), Models.xgbc(), Models.dtc()]
+
+# a = ['SVC', 'LogisticRegression', 'RandomForestClassifier', 'KNeighborsClassifier',
+#      'GradientBoostingClassifier', 'XGBClassifier', 'DecisionTreeClassifier']
+
+# if top_book_:
+#     st.text("\n\n")
+#     st.write(models_acc[a.index(top_book_)])
 
 st.sidebar.subheader("Algoritmlar")
-top_book_ = st.sidebar.selectbox(
+
+algo_names = {
+    'SVC': 'Tayanch vektor mashinasi (SVC)',
+    'LogisticRegression': 'Logistik regressiya',
+    'RandomForestClassifier': "Tasodifiy o'rmon",
+    'KNeighborsClassifier': "Eng yaqin qo'shnilar (KNN)",
+    'GradientBoostingClassifier': 'Gradient kuchaytirish',
+    'XGBClassifier': 'XGBoost',
+    'DecisionTreeClassifier': "Qaror daraxti"
+}
+
+top_book_uz = st.sidebar.selectbox(
     label="Algoritmni tanlang",
-    options=['SVC', 'LogisticRegression', 'RandomForestClassifier', 'KNeighborsClassifier',
-             'GradientBoostingClassifier', 'XGBClassifier', 'DecisionTreeClassifier'])
+    options=list(algo_names.values()))
+
+reverse_map = {v: k for k, v in algo_names.items()}
+top_book_ = reverse_map[top_book_uz]
 
 models_acc = [Models.svc(), Models.lr(), Models.rfc(), Models.knc(), Models.gbc(), Models.xgbc(), Models.dtc()]
 
@@ -33,7 +86,7 @@ a = ['SVC', 'LogisticRegression', 'RandomForestClassifier', 'KNeighborsClassifie
 if top_book_:
     st.text("\n\n")
     st.write(models_acc[a.index(top_book_)])
-
+    
 try:
     user_input = st.sidebar.radio(
         label="O'z kreditingiz tasdiqlanishini bilmoqchimisiz?",

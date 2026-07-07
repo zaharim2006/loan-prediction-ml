@@ -18,7 +18,7 @@ class Models:
         model.fit(X_train_scaled, y_train)
         preds = model.predict(X_test_scaled)
         acc = score(y_test, preds)
-        return f'Accuracy from SVM.SVC:      {acc * 100:.2f} %'
+        return f'SVM.SVC aniqligi:      {acc * 100:.2f} %'
 
     def lr():
         X_train_scaled, X_test_scaled, y_train, y_test, scaler = dh.preprocess('./train.csv')
@@ -26,7 +26,7 @@ class Models:
         model.fit(X_train_scaled, y_train)
         preds = model.predict(X_test_scaled)
         acc = score(y_test, preds)
-        return f'Accuracy from LogisticRegression:       {acc * 100:.2f} %'
+        return f'Logistik regressiya aniqligi:       {acc * 100:.2f} %'
 
     def rfc():
         X_train_scaled, X_test_scaled, y_train, y_test, scaler = dh.preprocess('./train.csv')
@@ -34,7 +34,7 @@ class Models:
         model.fit(X_train_scaled, y_train)
         preds = model.predict(X_test_scaled)
         acc = score(y_test, preds)
-        return f'Accuracy from RandomForestClassifier:        {acc * 100:.2f} %'
+        return f"Tasodifiy o'rmon aniqligi:        {acc * 100:.2f} %"
 
     def knc():
         X_train_scaled, X_test_scaled, y_train, y_test, scaler = dh.preprocess('./train.csv')
@@ -42,7 +42,7 @@ class Models:
         model.fit(X_train_scaled, y_train)
         preds = model.predict(X_test_scaled)
         acc = score(y_test, preds)
-        return f'Accuracy from KNeighborsClassifier:       {acc * 100:.2f} %'
+        return f"Eng yaqin qo'shnilar (KNN) aniqligi:       {acc * 100:.2f} %"
 
     def gbc():
         X_train_scaled, X_test_scaled, y_train, y_test, scaler = dh.preprocess('./train.csv')
@@ -50,7 +50,7 @@ class Models:
         model.fit(X_train_scaled, y_train)
         preds = model.predict(X_test_scaled)
         acc = score(y_test, preds)
-        return f'Accuracy from GradientBoostingClassifier:      {acc * 100:.2f} %'
+        return f'Gradient kuchaytirish aniqligi:      {acc * 100:.2f} %'
 
     def xgbc():
         X_train_scaled, X_test_scaled, y_train, y_test, scaler = dh.preprocess('./train.csv')
@@ -58,7 +58,7 @@ class Models:
         model.fit(X_train_scaled, y_train)
         preds = model.predict(X_test_scaled)
         acc = score(y_test, preds)
-        return f'Accuracy from XGBClassifier:       {acc * 100:.2f} %'
+        return f'XGBoost aniqligi:       {acc * 100:.2f} %'
 
     def dtc():
         X_train_scaled, X_test_scaled, y_train, y_test, scaler = dh.preprocess('./train.csv')
@@ -66,4 +66,4 @@ class Models:
         model.fit(X_train_scaled, y_train)
         preds = model.predict(X_test_scaled)
         acc = score(y_test, preds)
-        return f'Accuracy from: DecisionTreeClassifier:        {acc * 100:.2f} %'
+        return f'Qaror daraxti aniqligi:        {acc * 100:.2f} %'
