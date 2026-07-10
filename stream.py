@@ -44,20 +44,6 @@ if data_ == 'Ha':
 
     st.write(df_uz)
 
-# st.sidebar.subheader("Algoritmlar")
-# top_book_ = st.sidebar.selectbox(
-#     label="Algoritmni tanlang",
-#     options=['SVC', 'LogisticRegression', 'RandomForestClassifier', 'KNeighborsClassifier',
-#              'GradientBoostingClassifier', 'XGBClassifier', 'DecisionTreeClassifier'])
-
-# models_acc = [Models.svc(), Models.lr(), Models.rfc(), Models.knc(), Models.gbc(), Models.xgbc(), Models.dtc()]
-
-# a = ['SVC', 'LogisticRegression', 'RandomForestClassifier', 'KNeighborsClassifier',
-#      'GradientBoostingClassifier', 'XGBClassifier', 'DecisionTreeClassifier']
-
-# if top_book_:
-#     st.text("\n\n")
-#     st.write(models_acc[a.index(top_book_)])
 
 st.sidebar.subheader("Algoritmlar")
 
