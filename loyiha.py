@@ -29,7 +29,7 @@ df['LoanAmount'] = df['LoanAmount'].fillna(df['LoanAmount'].median())
 print("\n=== Tozalashdan keyin ===")
 print(df.isnull().sum())
 
-# ============ EDA (Exploratory Data Analysis) ============
+# # ============ EDA (Exploratory Data Analysis) ============
 
 # 1. Loan_Status taqsimoti (nechta ha, nechta yo'q)
 print("\n=== Loan_Status taqsimoti ===")
